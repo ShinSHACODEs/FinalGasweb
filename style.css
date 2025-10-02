@@ -1,0 +1,465 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9fafb;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Loading Screen */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #dc2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOut 0.5s ease-in-out 1.5s forwards;
+}
+
+.earth-spinner {
+  font-size: 6rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MnvUiiVgnletUiYntjjCPjHGQi1j7o.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-wrap: balance;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  color: #d1d5db;
+  text-wrap: pretty;
+}
+
+@media (min-width: 768px) {
+  .hero h1 {
+    font-size: 4.5rem;
+  }
+  .hero p {
+    font-size: 1.875rem;
+  }
+}
+
+/* Vital Signs Section */
+.vital-signs {
+  padding: 4rem 0;
+  background-color: white;
+}
+
+.vital-signs h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.vital-signs .subtitle {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 3rem;
+  font-size: 1.125rem;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.vital-card {
+  min-width: 100%;
+  padding: 0 1rem;
+  flex-shrink: 0;
+}
+
+.vital-card-content {
+  background: linear-gradient(to bottom right, #fef2f2, #f9fafb);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.vital-card-icon {
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.vital-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.vital-card-value {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #dc2626;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.vital-card-unit {
+  font-size: 1.5rem;
+}
+
+.vital-card-description {
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.vital-card-trend {
+  text-align: center;
+  font-weight: 600;
+}
+
+.trend-up {
+  color: #dc2626;
+}
+
+.trend-down {
+  color: #2563eb;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: #1f2937;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 50%;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background-color: #f3f4f6;
+}
+
+.prev-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 0;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background-color: #dc2626;
+  width: 2rem;
+}
+
+/* Greenhouse Gases Section */
+.greenhouse-gases {
+  padding: 4rem 0;
+  background-color: #f9fafb;
+}
+
+.greenhouse-gases h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #1f2937;
+}
+
+.gas-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .gas-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.gas-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.gas-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.gas-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.gas-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #dc2626;
+  margin-bottom: 1rem;
+}
+
+.gas-content p {
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+/* Global Warming Section */
+.global-warming {
+  padding: 4rem 0;
+  background-color: white;
+}
+
+.global-warming h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #1f2937;
+}
+
+.warming-grid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .warming-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.warming-card {
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.warming-card.causes {
+  background: linear-gradient(to bottom right, #fef2f2, #fed7aa);
+}
+
+.warming-card.effects {
+  background: linear-gradient(to bottom right, #dbeafe, #cffafe);
+}
+
+.warming-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.warming-card.causes h3 {
+  color: #dc2626;
+}
+
+.warming-card.effects h3 {
+  color: #2563eb;
+}
+
+.warming-card ul {
+  list-style: none;
+}
+
+.warming-card li {
+  color: #374151;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.warming-card.causes li::before {
+  content: "•";
+  color: #dc2626;
+  position: absolute;
+  left: 0;
+}
+
+.warming-card.effects li::before {
+  content: "•";
+  color: #2563eb;
+  position: absolute;
+  left: 0;
+}
+
+.solutions-card {
+  background: linear-gradient(to right, #f0fdf4, #d1fae5);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.solutions-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #059669;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.solutions-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .solutions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.solutions-card ul {
+  list-style: none;
+}
+
+.solutions-card li {
+  color: #374151;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.solutions-card li::before {
+  content: "✓";
+  color: #059669;
+  position: absolute;
+  left: 0;
+}
+
+/* Footer */
+footer {
+  background-color: #1f2937;
+  color: white;
+  padding: 2rem 0;
+}
+
+.powerbi-button-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.powerbi-button {
+  display: inline-block;
+  background-color: #dc2626;
+  color: white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.powerbi-button:hover {
+  background-color: #b91c1c;
+  transform: scale(1.05);
+}
+
+footer p {
+  text-align: center;
+  color: #d1d5db;
+}
+
+.footer-subtitle {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
